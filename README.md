@@ -1,2 +1,1 @@
-# LamaGame
 # home-work-nodejs
