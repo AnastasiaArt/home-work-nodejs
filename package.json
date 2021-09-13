@@ -12,11 +12,9 @@
     "lint"
   ],
   "dependencies": {
-    "eslint": "^7.32.0",
-    "moment": "^2.29.1",
-    "yargs": "^17.1.1"
+    "eslint": "^7.32.0"
   },
   "bin": {
-    "extended-date": "js/date.js"
+    "guess": "js/guess.js"
   }
 }
