@@ -1,0 +1,22 @@
+{
+  "name": "home-work-nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:AnastasiaArt/home-work-nodejs.git",
+  "author": "Artemyeva Anastasiya <art-nastya@inbox.ru>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ext .js --ignore-path .gitignore ."
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "dependencies": {
+    "eslint": "^7.32.0",
+    "moment": "^2.29.1",
+    "yargs": "^17.1.1"
+  },
+  "bin": {
+    "extended-date": "js/date.js"
+  }
+}
