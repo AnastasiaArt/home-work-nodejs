@@ -1,25 +1,20 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js link
+  /snap/node/5319/bin/node /usr/local/bin/yarn link
 
 PATH: 
-  /home/art/.yarn/bin:/home/art/.yarn/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+  /home/art/.yarn/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
 Yarn version: 
-  1.22.5
+  1.22.11
 
 Node version: 
-  12.21.0
+  12.22.6
 
 Platform: 
   linux x64
 
 Trace: 
-  SyntaxError: /home/art/projects/home-work-nodejs/package.json: Unexpected token } in JSON at position 507
-      at JSON.parse (<anonymous>)
-      at /usr/share/yarn/lib/cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (/usr/share/yarn/lib/cli.js:310:30)
-      at /usr/share/yarn/lib/cli.js:321:13
+  Error: ENOENT: no such file or directory, symlink '../../.config/yarn/link/home-work-nodejs/js/date.js' -> '/home/art/.yarn/bin/extended-date'
 
 npm manifest: 
   {
@@ -42,7 +37,8 @@ npm manifest:
     },
     "bin": {
       "extended-date": "js/date.js",
-      "guess": "js/date.js",
+      "guess": "js/guess.js",
+      "zero-game": ""
     }
   }
 

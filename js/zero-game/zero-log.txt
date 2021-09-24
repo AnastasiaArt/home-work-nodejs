@@ -1,0 +1,13 @@
+{"zero-game":"Fri Sep 24 2021 18:59:21 GMT+0300 (Moscow Standard Time)","result":"loss"}
+{"zero-game":"Fri Sep 24 2021 18:59:22 GMT+0300 (Moscow Standard Time)","result":"loss"}
+{"zero-game":"Fri Sep 24 2021 18:59:22 GMT+0300 (Moscow Standard Time)","result":"win"}
+{"zero-game":"Fri Sep 24 2021 18:59:22 GMT+0300 (Moscow Standard Time)","result":"win"}
+{"zero-game":"Fri Sep 24 2021 18:59:23 GMT+0300 (Moscow Standard Time)","result":"loss"}
+{"zero-game":"Fri Sep 24 2021 18:59:23 GMT+0300 (Moscow Standard Time)","result":"win"}
+{"zero-game":"Fri Sep 24 2021 18:59:23 GMT+0300 (Moscow Standard Time)","result":"loss"}
+{"zero-game":"Fri Sep 24 2021 18:59:23 GMT+0300 (Moscow Standard Time)","result":"win"}
+{"zero-game":"Fri Sep 24 2021 18:59:24 GMT+0300 (Moscow Standard Time)","result":"loss"}
+{"zero-game":"Fri Sep 24 2021 18:59:24 GMT+0300 (Moscow Standard Time)","result":"win"}
+{"zero-game":"Fri Sep 24 2021 18:59:24 GMT+0300 (Moscow Standard Time)","result":"win"}
+{"zero-game":"Fri Sep 24 2021 18:59:24 GMT+0300 (Moscow Standard Time)","result":"win"}
+{"zero-game":"Fri Sep 24 2021 18:59:25 GMT+0300 (Moscow Standard Time)","result":"win"}
