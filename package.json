@@ -18,6 +18,8 @@
   },
   "bin": {
     "extended-date": "js/date.js",
-    "guess": "js/guess.js"
+    "guess": "js/guess.js",
+    "zero-game": "js/zero-game/index.js",
+    "zero-log": "js/zero-game/log-parser.js"
   }
 }
