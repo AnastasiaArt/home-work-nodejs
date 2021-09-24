@@ -12,7 +12,7 @@ const { once } = require('events');
             crlfDelay: Infinity
         });
         fileStream.on('error', (err) => {
-            console.log('Zero-log is failed!', err)
+            console.log('Zero-log is failed!\n', err)
         });
         let totalGames = 0;
         let countWin = 0;
@@ -20,7 +20,7 @@ const { once } = require('events');
         rl.on('line', (line) => {
                 totalGames++;
                 // Process the line.
-                const obj = JSON.parse(line)
+                const obj = JSON.parse(line);
                 if (obj && Object.keys('obj').length > 0 && obj.result === 'win') {
                     countWin++;
                 } else {
