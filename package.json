@@ -17,7 +17,11 @@
     "yargs": "^17.1.1"
   },
   "bin": {
-    "extended-date": "js/date.js",
-    "guess": "js/guess.js"
+    "extended-date": "js/1.2/date.js",
+    "guess": "js/1.2/guess.js",
+    "weatherstack": "js/1.5/index.js"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0"
   }
 }
