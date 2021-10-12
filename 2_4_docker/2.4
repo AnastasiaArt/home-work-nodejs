@@ -1,0 +1,253 @@
+------ Задание 1 -------
+1.
+❯ sudo docker pull busybox
+[sudo] password for art:
+Using default tag: latest
+latest: Pulling from library/busybox
+24fb2886d6f6: Pull complete
+Digest: sha256:f7ca5a32c10d51aeda3b4d01c61c6061f497893d7f6628b92f822f7117182a57
+Status: Downloaded newer image for busybox:latest
+docker.io/library/busybox:latest
+
+2.
+❯ sudo docker run --name pinger -it busybox  ping  -c 7 netology.ru
+  [sudo] password for art:
+  PING netology.ru (104.22.49.171): 56 data bytes
+  64 bytes from 104.22.49.171: seq=0 ttl=58 time=14.133 ms
+  64 bytes from 104.22.49.171: seq=1 ttl=58 time=12.843 ms
+  64 bytes from 104.22.49.171: seq=2 ttl=58 time=13.752 ms
+  64 bytes from 104.22.49.171: seq=3 ttl=58 time=55.287 ms
+  64 bytes from 104.22.49.171: seq=4 ttl=58 time=14.628 ms
+  64 bytes from 104.22.49.171: seq=5 ttl=58 time=12.012 ms
+  64 bytes from 104.22.49.171: seq=6 ttl=58 time=12.035 ms
+
+  --- netology.ru ping statistics ---
+  7 packets transmitted, 7 packets received, 0% packet loss
+  round-trip min/avg/max = 12.012/19.241/55.287 ms
+
+3.
+ sudo docker ps -a
+CONTAINER ID   IMAGE                           COMMAND                  CREATED         STATUS                      PORTS                                                                                                                                                 NAMES
+8d59b54c716b   busybox                         "ping -c 7 netology.…"   7 minutes ago   Exited (0) 7 minutes ago                                                                                                                                                          pinger
+4d171260f1c1   app_examples                    "docker-php-entrypoi…"   32 hours ago    Up 32 hours                 0.0.0.0:9000->8000/tcp, :::9000->8000/tcp                                                                                                             app_examples_1
+bd7d193e8408   app_php                         "docker-php-entrypoi…"   32 hours ago    Up 32 hours                 0.0.0.0:1025->1025/tcp, :::1025->1025/tcp, 0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 0.0.0.0:9912-9913->9912-9913/tcp, :::9912-9913->9912-9913/tcp   app_php_1
+66244f3971ff   node:14-bullseye-slim           "docker-entrypoint.s…"   32 hours ago    Up 32 hours                                                                                                                                                                       app_node_1
+2f5ef4bba64c   postgres                        "docker-entrypoint.s…"   32 hours ago    Up 32 hours                 0.0.0.0:5432->5432/tcp, :::5432->5432/tcp                                                                                                             app_db_1
+8a88ec4f2046   adminer                         "entrypoint.sh docke…"   46 hours ago    Exited (0) 45 hours ago                                                                                                                                                           app_adminer_1
+e87b52869617   butschster/buggregator:latest   "docker-php-entrypoi…"   47 hours ago    Exited (0) 47 hours ago                                                                                                                                                           frosty_kalam
+bbe2c66a746c   nginx                           "/docker-entrypoint.…"   13 days ago     Exited (0) 32 seconds ago                                                                                                                                                         itpr_nginx_1
+aea632f881bc   itpr_php                        "docker-php-entrypoi…"   13 days ago     Exited (0) 17 seconds ago                                                                                                                                                         itpr_php_1
+c53c040d0d4c   mailhog/mailhog:latest          "MailHog"                13 days ago     Exited (2) 7 seconds ago                                                                                                                                                          itpr_mailhog_1
+ca2dfb84a9c8   redis                           "docker-entrypoint.s…"   13 days ago     Exited (0) 9 days ago                                                                                                                                                             itpr_redis_1
+dbc99d925ee1   dfc3eb4f37a0                    "/usr/local/bin/supe…"   13 days ago     Exited (255) 13 days ago                                                                                                                                                          laughing_jennings
+
+4.
+❯ sudo docker logs -t pinger
+2021-10-12T20:22:54.134251368Z PING netology.ru (104.22.49.171): 56 data bytes
+2021-10-12T20:22:54.148534916Z 64 bytes from 104.22.49.171: seq=0 ttl=58 time=14.133 ms
+2021-10-12T20:22:55.147417436Z 64 bytes from 104.22.49.171: seq=1 ttl=58 time=12.843 ms
+2021-10-12T20:22:56.148571074Z 64 bytes from 104.22.49.171: seq=2 ttl=58 time=13.752 ms
+2021-10-12T20:22:57.190569211Z 64 bytes from 104.22.49.171: seq=3 ttl=58 time=55.287 ms
+2021-10-12T20:22:58.153248391Z 64 bytes from 104.22.49.171: seq=4 ttl=58 time=14.628 ms
+2021-10-12T20:22:59.153659760Z 64 bytes from 104.22.49.171: seq=5 ttl=58 time=12.012 ms
+2021-10-12T20:23:00.153774737Z 64 bytes from 104.22.49.171: seq=6 ttl=58 time=12.035 ms
+2021-10-12T20:23:00.153814359Z
+2021-10-12T20:23:00.153821085Z --- netology.ru ping statistics ---
+2021-10-12T20:23:00.153827043Z 7 packets transmitted, 7 packets received, 0% packet loss
+2021-10-12T20:23:00.153832543Z round-trip min/avg/max = 12.012/19.241/55.287 ms
+
+5.
+ sudo docker start pinger
+pinger
+
+6.
+❯ sudo docker ps -a
+CONTAINER ID   IMAGE                           COMMAND                  CREATED          STATUS                      PORTS                                                                                                                                                 NAMES
+8d59b54c716b   busybox                         "ping -c 7 netology.…"   28 minutes ago   Up 3 seconds                                                                                                                                                                      pinger
+4d171260f1c1   app_examples                    "docker-php-entrypoi…"   32 hours ago     Up 32 hours                 0.0.0.0:9000->8000/tcp, :::9000->8000/tcp                                                                                                             app_examples_1
+bd7d193e8408   app_php                         "docker-php-entrypoi…"   32 hours ago     Up 32 hours                 0.0.0.0:1025->1025/tcp, :::1025->1025/tcp, 0.0.0.0:8000->8000/tcp, :::8000->8000/tcp, 0.0.0.0:9912-9913->9912-9913/tcp, :::9912-9913->9912-9913/tcp   app_php_1
+66244f3971ff   node:14-bullseye-slim           "docker-entrypoint.s…"   32 hours ago     Up 32 hours                                                                                                                                                                       app_node_1
+2f5ef4bba64c   postgres                        "docker-entrypoint.s…"   32 hours ago     Up 32 hours                 0.0.0.0:5432->5432/tcp, :::5432->5432/tcp                                                                                                             app_db_1
+8a88ec4f2046   adminer                         "entrypoint.sh docke…"   47 hours ago     Exited (0) 45 hours ago                                                                                                                                                           app_adminer_1
+e87b52869617   butschster/buggregator:latest   "docker-php-entrypoi…"   2 days ago       Exited (0) 2 days ago                                                                                                                                                             frosty_kalam
+bbe2c66a746c   nginx                           "/docker-entrypoint.…"   13 days ago      Exited (0) 21 minutes ago                                                                                                                                                         itpr_nginx_1
+aea632f881bc   itpr_php                        "docker-php-entrypoi…"   13 days ago      Exited (0) 21 minutes ago                                                                                                                                                         itpr_php_1
+c53c040d0d4c   mailhog/mailhog:latest          "MailHog"                13 days ago      Exited (2) 21 minutes ago                                                                                                                                                         itpr_mailhog_1
+ca2dfb84a9c8   redis                           "docker-entrypoint.s…"   13 days ago      Exited (0) 9 days ago                                                                                                                                                             itpr_redis_1
+dbc99d925ee1   dfc3eb4f37a0                    "/usr/local/bin/supe…"   13 days ago      Exited (255) 13 days ago                                                                                                                                                          laughing_jennings
+
+7.
+❯ sudo docker logs -t pinger
+2021-10-12T20:22:54.134251368Z PING netology.ru (104.22.49.171): 56 data bytes
+2021-10-12T20:22:54.148534916Z 64 bytes from 104.22.49.171: seq=0 ttl=58 time=14.133 ms
+2021-10-12T20:22:55.147417436Z 64 bytes from 104.22.49.171: seq=1 ttl=58 time=12.843 ms
+2021-10-12T20:22:56.148571074Z 64 bytes from 104.22.49.171: seq=2 ttl=58 time=13.752 ms
+2021-10-12T20:22:57.190569211Z 64 bytes from 104.22.49.171: seq=3 ttl=58 time=55.287 ms
+2021-10-12T20:22:58.153248391Z 64 bytes from 104.22.49.171: seq=4 ttl=58 time=14.628 ms
+2021-10-12T20:22:59.153659760Z 64 bytes from 104.22.49.171: seq=5 ttl=58 time=12.012 ms
+2021-10-12T20:23:00.153774737Z 64 bytes from 104.22.49.171: seq=6 ttl=58 time=12.035 ms
+2021-10-12T20:23:00.153814359Z
+2021-10-12T20:23:00.153821085Z --- netology.ru ping statistics ---
+2021-10-12T20:23:00.153827043Z 7 packets transmitted, 7 packets received, 0% packet loss
+2021-10-12T20:23:00.153832543Z round-trip min/avg/max = 12.012/19.241/55.287 ms
+2021-10-12T20:41:09.579929991Z PING netology.ru (104.22.48.171): 56 data bytes
+2021-10-12T20:41:09.592686621Z 64 bytes from 104.22.48.171: seq=0 ttl=58 time=12.865 ms
+2021-10-12T20:41:10.596277273Z 64 bytes from 104.22.48.171: seq=1 ttl=58 time=15.974 ms
+2021-10-12T20:41:11.596311401Z 64 bytes from 104.22.48.171: seq=2 ttl=58 time=13.342 ms
+2021-10-12T20:41:12.596274126Z 64 bytes from 104.22.48.171: seq=3 ttl=58 time=12.676 ms
+2021-10-12T20:41:13.597325846Z 64 bytes from 104.22.48.171: seq=4 ttl=58 time=13.456 ms
+2021-10-12T20:41:14.599746097Z 64 bytes from 104.22.48.171: seq=5 ttl=58 time=15.812 ms
+2021-10-12T20:41:15.602675107Z 64 bytes from 104.22.48.171: seq=6 ttl=58 time=15.847 ms
+2021-10-12T20:41:15.602714823Z
+2021-10-12T20:41:15.602724779Z --- netology.ru ping statistics ---
+2021-10-12T20:41:15.602734161Z 7 packets transmitted, 7 packets received, 0% packet loss
+2021-10-12T20:41:15.602739961Z round-trip min/avg/max = 12.676/14.281/15.974 ms
+2021-10-12T20:49:57.046240608Z PING netology.ru (104.22.48.171): 56 data bytes
+2021-10-12T20:49:57.059008330Z 64 bytes from 104.22.48.171: seq=0 ttl=58 time=12.611 ms
+2021-10-12T20:49:58.059951104Z 64 bytes from 104.22.48.171: seq=1 ttl=58 time=13.261 ms
+2021-10-12T20:49:59.059546583Z 64 bytes from 104.22.48.171: seq=2 ttl=58 time=12.780 ms
+2021-10-12T20:50:00.060609089Z 64 bytes from 104.22.48.171: seq=3 ttl=58 time=13.450 ms
+2021-10-12T20:50:01.060405440Z 64 bytes from 104.22.48.171: seq=4 ttl=58 time=12.782 ms
+2021-10-12T20:50:02.061263001Z 64 bytes from 104.22.48.171: seq=5 ttl=58 time=13.612 ms
+2021-10-12T20:50:03.060645464Z 64 bytes from 104.22.48.171: seq=6 ttl=58 time=12.707 ms
+2021-10-12T20:50:03.060694541Z
+2021-10-12T20:50:03.060701565Z --- netology.ru ping statistics ---
+2021-10-12T20:50:03.060735308Z 7 packets transmitted, 7 packets received, 0% packet loss
+2021-10-12T20:50:03.060741093Z round-trip min/avg/max = 12.611/13.029/13.612 ms
+2021-10-12T20:51:12.877872344Z PING netology.ru (172.67.43.83): 56 data bytes
+2021-10-12T20:51:12.886693965Z 64 bytes from 172.67.43.83: seq=0 ttl=58 time=8.844 ms
+2021-10-12T20:51:13.882709472Z 64 bytes from 172.67.43.83: seq=1 ttl=58 time=4.667 ms
+2021-10-12T20:51:14.883738797Z 64 bytes from 172.67.43.83: seq=2 ttl=58 time=5.301 ms
+2021-10-12T20:51:15.885893067Z 64 bytes from 172.67.43.83: seq=3 ttl=58 time=7.326 ms
+2021-10-12T20:51:16.893954668Z 64 bytes from 172.67.43.83: seq=4 ttl=58 time=12.346 ms
+2021-10-12T20:51:17.892221387Z 64 bytes from 172.67.43.83: seq=5 ttl=58 time=7.507 ms
+2021-10-12T20:51:18.891790879Z 64 bytes from 172.67.43.83: seq=6 ttl=58 time=4.139 ms
+2021-10-12T20:51:18.891835612Z
+2021-10-12T20:51:18.891842873Z --- netology.ru ping statistics ---
+2021-10-12T20:51:18.891849236Z 7 packets transmitted, 7 packets received, 0% packet loss
+2021-10-12T20:51:18.891855111Z round-trip min/avg/max = 4.139/7.161/12.346 ms
+
+8. 4 - общее количество запусков команды ping
+   28 -общее количество отправленых запросов
+
+9.
+❯ sudo docker rm pinger
+pinger
+
+10.
+❯ sudo docker rmi busybox
+Untagged: busybox:latest
+Untagged: busybox@sha256:f7ca5a32c10d51aeda3b4d01c61c6061f497893d7f6628b92f822f7117182a57
+Deleted: sha256:16ea53ea7c652456803632d67517b78a4f9075a10bfdc4fc6b7b4cbf2bc98497
+Deleted: sha256:cfd97936a58000adc09a9f87adeeb7628a2c71d11c4998e6e7f26935fa0cd713
+
+
+--------- Задание 2 ---------
+1.
+❯ sudo docker pull node:15.14
+15.14: Pulling from library/node
+bfde2ec33fbc: Pull complete
+787f5e2f1047: Pull complete
+7b6173a10eb8: Pull complete
+dc05be471d51: Pull complete
+55fab5cadd3c: Pull complete
+bd821d20ef8c: Pull complete
+6041b69671c6: Pull complete
+989c5d2d2313: Pull complete
+4b57d41e8391: Pull complete
+Digest: sha256:608bba799613b1ebf754034ae008849ba51e88b23271412427b76d60ae0d0627
+Status: Downloaded newer image for node:15.14
+docker.io/library/node:15.14
+
+2. 3.4.
+❯ sudo docker run --name mynode -it --env NAME=Nastya --env SURNAME=Artemeva node:15.14 bash
+   root@e99ad1f16e8b:/# echo $NAME $SURNAME
+   Nastya Artemeva
+   root@e99ad1f16e8b:/# exit
+   exit
+
+5.
+❯ sudo docker rm mynode
+mynode
+❯ sudo docker rmi node:15.14
+Untagged: node:15.14
+Untagged: node@sha256:608bba799613b1ebf754034ae008849ba51e88b23271412427b76d60ae0d0627
+Deleted: sha256:3d3f41722daf1a77c34d6eade6676bbffa2d6a2a21095de2ab0c427a5c942fc9
+Deleted: sha256:601382991a159cfc5013ad973158f30b7b7a913e8d7e547b3456deab3ad98022
+Deleted: sha256:d5db49eecae8c02c9ea3a79f89c43ded9162bac118a0302a7b514d0df82aa112
+Deleted: sha256:a2c1973858d0aad3de0927294602b17c8ef9050c30e0f461e0868997a08552a4
+Deleted: sha256:a0153172017a08a521a8be971ca4dcb5fbc4b7227642c12bbb2da6265bd66b50
+Deleted: sha256:f1123940e954d335d91b52a40fab4f8144f38ff113ade7d65663071d0f06da6f
+Deleted: sha256:f1f4fbb0e7e6e0ce2d9eae1e577f9f6df0a719dd874bff00b2d08895c75c297d
+Deleted: sha256:1eb455ab6d45fdbbd90fccff791ffa228080c052acf464f8da1b1d78650bd706
+Deleted: sha256:1dbe832a694971a925d7d216f49b700c95f402bd72288f9d37eceb1d59dcf72d
+Deleted: sha256:2f4ee6a2e1b5dfb9236cd262e788f9d39109242ca27a4aacb583c8af66ec3ff7
+
+-------- Задание 3 --------
+1.
+❯ sudo docker pull node:15.14
+15.14: Pulling from library/node
+bfde2ec33fbc: Pull complete
+787f5e2f1047: Pull complete
+7b6173a10eb8: Pull complete
+dc05be471d51: Pull complete
+55fab5cadd3c: Pull complete
+bd821d20ef8c: Pull complete
+6041b69671c6: Pull complete
+989c5d2d2313: Pull complete
+4b57d41e8391: Pull complete
+Digest: sha256:608bba799613b1ebf754034ae008849ba51e88b23271412427b76d60ae0d0627
+Status: Downloaded newer image for node:15.14
+docker.io/library/node:15.14
+
+2.
+❯ sudo docker run --name first_node -d -v $PWD/data:/var/first/data node:15.14 tail -f /dev/null
+66c72b01ede71b4d62ccd0990b488e0b5e8134397a03bf8b4e8c57295d47aadc
+
+3.
+❯ sudo docker run --name second_node -d -v $PWD/data:/var/second/data node:15.14 tail -f /dev/null
+b9276143dfa2b281db2dc1b6d2991f4a5fc31f867b05a7fabe5d595cf800a196
+
+4.
+❯ sudo docker exec -ti first_node sh -c "hostname > /var/first/data/hostname"
+
+5.
+❯ sudo hostname > data/hostname_localhost
+
+6.
+❯ sudo docker exec -ti second_node sh -c "ls -l /var/second/data"
+total 8
+-rw-r--r-- 1 root root 13 Oct 12 22:34 hostname
+-rw-rw-r-- 1 1001 1001  8 Oct 12 22:56 hostname_localhost
+❯ sudo docker exec -ti second_node sh -c "cat /var/second/data/*"
+66c72b01ede7
+goddess
+
+7.
+❯ sudo docker stop first_node second_node
+first_node
+second_node
+
+8.
+❯ sudo docker rm first_node second_node
+first_node
+second_node
+
+9.
+❯ sudo docker rmi node:15.14
+Untagged: node:15.14
+Untagged: node@sha256:608bba799613b1ebf754034ae008849ba51e88b23271412427b76d60ae0d0627
+Deleted: sha256:3d3f41722daf1a77c34d6eade6676bbffa2d6a2a21095de2ab0c427a5c942fc9
+Deleted: sha256:601382991a159cfc5013ad973158f30b7b7a913e8d7e547b3456deab3ad98022
+Deleted: sha256:d5db49eecae8c02c9ea3a79f89c43ded9162bac118a0302a7b514d0df82aa112
+Deleted: sha256:a2c1973858d0aad3de0927294602b17c8ef9050c30e0f461e0868997a08552a4
+Deleted: sha256:a0153172017a08a521a8be971ca4dcb5fbc4b7227642c12bbb2da6265bd66b50
+Deleted: sha256:f1123940e954d335d91b52a40fab4f8144f38ff113ade7d65663071d0f06da6f
+Deleted: sha256:f1f4fbb0e7e6e0ce2d9eae1e577f9f6df0a719dd874bff00b2d08895c75c297d
+Deleted: sha256:1eb455ab6d45fdbbd90fccff791ffa228080c052acf464f8da1b1d78650bd706
+Deleted: sha256:1dbe832a694971a925d7d216f49b700c95f402bd72288f9d37eceb1d59dcf72d
+Deleted: sha256:2f4ee6a2e1b5dfb9236cd262e788f9d39109242ca27a4aacb583c8af66ec3ff7
+
+
+
+
